@@ -1,0 +1,67 @@
+<form [formGroup]="signUpForm" (ngSubmit)="login(signUpForm)">
+    <div class="body">
+      <section>
+        <div class="signUp">
+          <div class="content">
+            <h2>Sign Up</h2>
+            <div class="form">
+              <div class="inputBox">
+                <input type="text" id="name" formControlName="name" placeholder="Enter your Name">
+                <i style="font-weight: bold;">Name</i>
+                @if (name?.invalid && (name?.dirty || name?.touched)) {
+                  @if (name?.errors?.['required']) {
+                      <span>Name is required.</span>
+                  }
+                }
+              </div>
+              <div class="inputBox">
+                <input type="text" id="email" formControlName="email" placeholder="Enter your Email">
+                <i style="font-weight: bold;"> Email </i>
+                @if (email?.invalid && (email?.dirty || email?.touched)) {
+                  @if (email?.errors?.['required']) {
+                      <span>Email is required.</span>
+                  } @else if (email?.errors?.['minlength']) {
+                      <span>Email must be at least 4 characters long.</span>
+                  }
+                }
+              </div>
+              <div class="inputBox">
+                <input type="text" id="phone" formControlName="phone" placeholder="Enter your Phone Number">
+                <i style="font-weight: bold;">Phone Number</i>
+                @if (phone?.invalid && (phone?.dirty || phone?.touched)) {
+                  @if (phone?.errors?.['required']) {
+                      <span>Phone number is required.</span>
+                  }
+                }
+              </div>
+              <div class="inputBox">
+                <input type="password" id="password" formControlName="password" placeholder="Enter your Password">
+                <i>Password</i>
+                @if (password?.invalid && (password?.dirty || password?.touched)) {
+                  @if (password?.errors?.['required']) {
+                      <span>Password is required.</span>
+                  } @else if (password?.errors?.['minlength']) {
+                      <span>Password must be at least 4 characters long.</span>
+                  }
+                }
+              </div>
+              <div class="inputBox">
+                <input type="password" id="password" formControlName="password" placeholder="Re-enter your Password">
+                <i> Confirm Password</i>
+                @if (password?.invalid && (password?.dirty || password?.touched)) {
+                  @if (password?.errors?.['required']) {
+                      <span>Password is required.</span>
+                  } @else if (password?.errors?.['minlength']) {
+                      <span>Password must be at least 4 characters long.</span>
+                  }
+                }
+              </div>
+              <div class="inputBox">
+                <input type="submit" [disabled]="signUpForm.invalid" value="SignUp">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+</form>
